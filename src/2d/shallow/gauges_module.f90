@@ -276,8 +276,11 @@ contains
         ycent  = ylow + (jindex-.5d0)*hy
         xoff   = (xgauge(ii)-xcent)/hx
         yoff   = (ygauge(ii)-ycent)/hy
-        if (xoff .lt. 0.d0 .or. xoff .gt. 1.d0 .or. &
-            yoff .lt. 0.d0 .or. yoff .gt. 1.d0) then
+
+        ! We expect 0 <= xoff, yoff <= 1 but if gauge is exactly 
+        ! at center of cell these might be off by rounding error
+        if (xoff .lt. -1.d-4 .or. xoff .gt. 1.0001d0 .or. &
+            yoff .lt. -1.d-4 .or. yoff .gt. 1.0001d0) then
            write(6,*) "*** print_gauges: Interpolation problem at gauge ",&
                        igauge(ii)
            write(6,*) "    xoff,yoff: ", xoff,yoff
