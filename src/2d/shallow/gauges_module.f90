@@ -278,7 +278,9 @@ contains
         yoff   = (ygauge(ii)-ycent)/hy
         if (xoff .lt. 0.d0 .or. xoff .gt. 1.d0 .or. &
             yoff .lt. 0.d0 .or. yoff .gt. 1.d0) then
-           write(6,*)" BIG PROBLEM in DUMPGAUGE", i
+           write(6,*) "*** print_gauges: Interpolation problem at gauge ",&
+                       igauge(ii)
+           write(6,*) "    xoff,yoff: ", xoff,yoff
         endif
 
      ! ## Modified below from amrclaw/src/2d/gauges_module.f90 
