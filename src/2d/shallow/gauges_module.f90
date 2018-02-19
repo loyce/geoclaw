@@ -84,7 +84,7 @@ module gauges_module
     integer, allocatable, dimension(:) ::  mbestsrc, mbestorder, &
                           igauge, mbestg1, mbestg2
 
-    logical, parameter :: INTERPOLATE = .true.
+    logical, parameter :: INTERPOLATE = .false.
 
 contains
 
